@@ -26,7 +26,7 @@ public class MessageServiceImpl implements MessageService {
 	public List<Message> readMessages(String username,Long start,Integer limit) {
 		List<Message> s = messagerepo.findByUsername(username);
 		if(s.size()==0) {
-			throw new ItemNotFoundException("The username " + username + " does not exist");
+			throw new ItemNotFoundException("There are no chatlogs for the user " + username);
 		}
 		Collections.sort(s);
 		if(start==null) {
@@ -66,7 +66,7 @@ public class MessageServiceImpl implements MessageService {
 
 	@Override
 	@Transactional
-	public List<Message> deleteUser(String username) {
+	public List<Message> deleteMessagesForUser(String username) {
 		checkUserExists(username);
 		return messagerepo.deleteByUsername(username);
 		
@@ -92,7 +92,7 @@ public class MessageServiceImpl implements MessageService {
 	public void checkUserExists(String username) {
 		List<Message> s = messagerepo.findByUsername(username);
 		if(s.size()==0) {
-			throw new ItemNotFoundException("The username " + username + " does not exist");
+			throw new ItemNotFoundException("There are no chatlogs for the user " + username);
 		}
 		
 	}

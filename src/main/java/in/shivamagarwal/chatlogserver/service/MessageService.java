@@ -11,7 +11,7 @@ public interface MessageService {
 	
 	CreateMessageResponse saveMessageForUser(String username,Message message);
 	
-	List<Message> deleteUser(String username);
+	List<Message> deleteMessagesForUser(String username);
 	
 	String deleteMessage(String username,Long id);
 	

@@ -66,7 +66,7 @@ public class MessageController {
 	
 	@DeleteMapping("/chatlogs/{user}")
 	public List<Message> deleteMessagesForUser(@PathVariable("user") String username){
-		return messageService.deleteUser(username);
+		return messageService.deleteMessagesForUser(username);
 	}
 		
 	@DeleteMapping("/chatlogs/{user}/{msgid}")
